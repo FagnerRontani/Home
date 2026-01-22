@@ -37,10 +37,6 @@
       color:var(--text);
     }
 
-    @supports (height: 100dvh) {
-      body{ min-height:100dvh; }
-    }
-
     /* HERO */
     .hero{
       position:relative;
@@ -54,14 +50,15 @@
       display:flex;
       align-items:center;
       justify-content:space-between;
+      gap:20px;
     }
 
-    /* BRAND + GOLDEN KeY (EM COLUNA) */
+    /* BRAND */
     .brand{
       color:var(--accent);
       font-weight:700;
       display:flex;
-      flex-direction:column;     /* força Golden Key ficar embaixo */
+      flex-direction:column;
       align-items:flex-start;
       gap:4px;
     }
@@ -78,10 +75,37 @@
       align-items:center;
       gap:6px;
       font-size:1rem;
-      color:#facc15; /* dourado elegante */
+      color:#facc15;
       opacity:.9;
     }
 
+    /* MENU */
+    .menu{
+      display:flex;
+      gap:22px;
+      flex-wrap:wrap;
+    }
+
+    .menu a{
+      color:#c8f7e5;
+      text-decoration:none;
+      font-weight:500;
+      position:relative;
+      padding-bottom:6px;
+    }
+
+    .menu a.active::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:0;
+      width:100%;
+      height:3px;
+      background:var(--accent);
+      border-radius:4px;
+    }
+
+    /* HERO TEXT */
     .hero-inner{
       max-width:980px;
       margin:0 auto;
@@ -89,7 +113,7 @@
     }
 
     .hero h1{
-      margin:10px 0 10px;
+      margin:10px 0;
       font-size:2.6rem;
       color:var(--accent);
     }
@@ -103,13 +127,7 @@
       margin:0 auto 22px;
     }
 
-    @media (max-width:768px){
-      .hero{ padding-top:44px; }
-      .hero h1{ font-size:2.1rem; }
-      .subtitle{ font-size:1.05rem; }
-    }
-
-    /* CONTENT CARDS */
+    /* CONTENT */
     .wrap{
       max-width:1200px;
       margin:32px auto;
@@ -150,14 +168,15 @@
     }
 
     @media (max-width:768px){
-      .grid{ grid-template-columns:1fr; }
+      .grid{grid-template-columns:1fr}
+      .menu{justify-content:center}
     }
 
     /* FOOTER */
     footer{
       max-width:1200px;
       margin:48px auto 28px;
-      padding:0 20px calc(env(safe-area-inset-bottom) + 8px);
+      padding:0 20px;
     }
 
     .footer-pill{
@@ -166,95 +185,85 @@
       border-radius:999px;
       border:1px solid rgba(148,163,184,.18);
       background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
-      box-shadow:0 10px 30px rgba(0,0,0,.35) inset, 0 2px 10px rgba(0,0,0,.25);
       padding:18px 24px;
       text-align:center;
       color:#a9bdba;
       font-size:.95rem;
     }
-
-    .footer-pill a{
-      color:#c8f7e5;
-      text-decoration:none;
-    }
   </style>
 </head>
 
 <body>
-  <header class="hero">
-    <nav class="topbar">
-      <span class="brand">
-        <span class="name">
-          <i class="fas fa-satellite"></i>
-          Fagner Rontani
-        </span>
-        <span class="gk">
-          <i class="fas fa-star"></i>
-           Golden Key - The International Honour Society
-        </span>
+
+<header class="hero">
+  <nav class="topbar">
+    <span class="brand">
+      <span class="name">
+        <i class="fas fa-satellite"></i>
+        Fagner Rontani
       </span>
-    </nav>
+      <span class="gk">
+        <i class="fas fa-star"></i>
+        Golden Key – The International Honour Society
+      </span>
+    </span>
 
-    <div class="hero-inner">
-      <h1>Remote Sensing Specialist</h1>
-      <p class="subtitle">
-        Agronomy + Remote Sensing + Data. Practical solutions for crop monitoring and data-driven decisions.
-      </p>
+    <!-- MENU -->
+    <div class="menu">
+      <a href="index.html" class="active">Home</a>
+      <a href="gis-proficiency.html">Skills & Proficiency</a>
     </div>
-  </header>
+  </nav>
 
-  <main class="wrap">
-    <section id="cards" class="grid">
+  <div class="hero-inner">
+    <h1>Remote Sensing Specialist</h1>
+    <p class="subtitle">
+      Agronomy + Remote Sensing + Data. Practical solutions for crop monitoring and data-driven decisions.
+    </p>
+  </div>
+</header>
 
-      <article class="card">
-        <div class="badge"><i class="fas fa-tractor"></i></div>
-        <p class="text">
-          Agronomist with expertise in crop production, soil fertility, plant health, precision agriculture, and sustainable field solutions. My foundation in agronomy allows me to create tailored strategies for different agricultural systems.
-        </p>
-      </article>
+<main class="wrap">
+  <section class="grid">
 
-      <article class="card">
-        <div class="badge"><i class="fas fa-seedling"></i></div>
-        <p class="text">
-          Master's in Soil Fertility with research on cover crops, nutrient cycling, soil mapping, and precision agriculture. I developed methodologies to enhance nutrient management and improve crop yield efficiency.
-        </p>
-      </article>
+    <article class="card">
+      <div class="badge"><i class="fas fa-tractor"></i></div>
+      <p class="text">Agronomist with expertise in crop production, soil fertility, plant health, precision agriculture, and sustainable field solutions.</p>
+    </article>
 
-      <article class="card">
-        <div class="badge"><i class="fas fa-satellite"></i></div>
-        <p class="text">
-          Ph.D. Student at North Dakota State University, focusing on remote sensing in agriculture using drones, satellites, and sensors to improve crop monitoring and decision-making. I integrate advanced sensing tools with agronomic knowledge to address real-world farming challenges.
-        </p>
-      </article>
+    <article class="card">
+      <div class="badge"><i class="fas fa-seedling"></i></div>
+      <p class="text">Master's in Soil Fertility with research on cover crops, nutrient cycling, and precision agriculture.</p>
+    </article>
 
-      <article class="card">
-        <div class="badge"><i class="fas fa-leaf"></i></div>
-        <p class="text">
-          I combine solid field experience and academic training in agronomy, soil fertility, and remote sensing to develop integrated, technology-driven solutions for modern agriculture, supporting both farmers and research initiatives.
-        </p>
-      </article>
+    <article class="card">
+      <div class="badge"><i class="fas fa-satellite"></i></div>
+      <p class="text">Ph.D. Student at North Dakota State University focusing on remote sensing in agriculture.</p>
+    </article>
 
-      <article class="card">
-        <div class="badge"><i class="fa-solid fa-images"></i></div>
-        <p class="text">
-          Drone pilot with expertise in GIS and mapping, delivering high-quality geospatial data for precision agriculture, land management, and crop monitoring projects.
-        </p>
-      </article>
+    <article class="card">
+      <div class="badge"><i class="fas fa-leaf"></i></div>
+      <p class="text">Integrated agronomy and remote sensing solutions for modern agriculture.</p>
+    </article>
 
-      <article class="card">
-        <div class="badge"><i class="fas fa-handshake"></i></div>
-        <p class="text">
-          Experienced in collaborating with farmers and research teams to implement innovative agricultural technologies, integrating remote sensing insights into practical, on-farm solutions.
-        </p>
-      </article>
+    <article class="card">
+      <div class="badge"><i class="fa-solid fa-images"></i></div>
+      <p class="text">Drone pilot with expertise in GIS and high-quality geospatial mapping.</p>
+    </article>
 
-    </section>
-  </main>
+    <article class="card">
+      <div class="badge"><i class="fas fa-handshake"></i></div>
+      <p class="text">Collaboration with farmers and research teams for real-world impact.</p>
+    </article>
 
-  <footer id="contact">
-    <div class="footer-pill">
-      © 2025 Fagner Rontani
-    </div>
-  </footer>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-pill">
+    © 2025 Fagner Rontani
+  </div>
+</footer>
+
 </body>
 </html>
